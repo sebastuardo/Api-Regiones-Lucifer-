@@ -11,22 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :comune_name %>
-    <%= form.text_field :comune_name %>
+  <div class="field" id="region">
+    <%= form.label :region_name %>
+    
+    <%= form.select :region_name, Query.all.collect {|query| [query.comune_name, query.comune_name] }%>
   </div>
 
-  <div class="field">
+  <div class="field" id="province">
     <%= form.label :privince_name %>
-    <%= form.text_field :privince_name %>
+    <%= form.select :privince_name, Query.all.collect {|query| [query.comune_name, query.comune_name]}%>
   </div>
 
-  <div class="field">
+  <div class="field" id="comune">
     <%= form.label :comune_name %>
-    <%= form.text_field :comune_name %>
+    <%= form.select :comune_name, Query.all.collect {|query| [query.comune_name, query.comune_name]}%>
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+
+<%= javascript_pack_tag 'regions'%>
+<%= javascript_pack_tag 'provinces'%>
+<%= javascript_pack_tag 'comunes'%>
